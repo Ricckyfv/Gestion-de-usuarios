@@ -1,0 +1,14 @@
+# Java y Maven
+target/
+*.class
+*.jar
+*.war
+
+# IntelliJ / IDEs
+.idea/
+*.iml
+.vscode/
+
+# Docker y Sistema
+.env
+.DS_Store
