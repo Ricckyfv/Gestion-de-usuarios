@@ -27,7 +27,9 @@ Build Tool: Maven.
 La API base se encuentra en: http://localhost:8080/api/auth
 
 Ejemplo de Registro (POST /register):
+
 Body (JSON):
+
 {
 "name": "Lucas Rossi",
 "email": "lucas@example.com",
@@ -36,13 +38,16 @@ Body (JSON):
 }
 
 Ejemplo de Login (POST /login):
+
 Body (JSON):
+
 {
 "email": "lucas@example.com",
 "password": "mi_password_segura"
 }
 
 Respuesta Exitosa (200 OK):
+
 {
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
 "role": "USER",
@@ -56,13 +61,17 @@ Este proyecto utiliza JSON Web Tokens (JWT) para proteger los recursos. Una vez 
 No necesitas tener Java o MySQL instalados en tu sistema, solo necesitas Docker Desktop.
 
 Clonar el repositorio:
+
 git clone https://github.com/Ricckyfv/Gestion-de-usuarios
+
 cd Gestion-de-usuarios
 
 Construir el archivo ejecutable (.jar):
+
 ./mvnw clean package -DskipTests
 
 Levantar los servicios con Docker:
+
 docker-compose up --build
 
 La aplicación estará disponible en: http://localhost:8080
