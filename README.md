@@ -56,21 +56,15 @@ Este proyecto utiliza JSON Web Tokens (JWT) para proteger los recursos. Una vez 
 No necesitas tener Java o MySQL instalados en tu sistema, solo necesitas Docker Desktop.
 
 Clonar el repositorio:
+git clone https://github.com/Ricckyfv/Gestion-de-usuarios
+cd Gestion-de-usuarios
 
-Bash
-
-git clone https://github.com/tu-usuario/nombre-de-tu-repo.git
-cd nombre-de-tu-repo
 Construir el archivo ejecutable (.jar):
-
-Bash
-
 ./mvnw clean package -DskipTests
+
 Levantar los servicios con Docker:
-
-Bash
-
 docker-compose up --build
+
 La aplicación estará disponible en: http://localhost:8080
 
 📁 Estructura del Proyecto
