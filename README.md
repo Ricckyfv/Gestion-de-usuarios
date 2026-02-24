@@ -104,5 +104,8 @@ Puerto de la API: 8080
 #### Panel de Administración
 ![Panel](screenshots/panelUser.png)
 
+### Video de Demostración
+![Demo del Proyecto](screenshots/demo.gif)
+
 👤 Autor
 Ricardo Fernández - www.linkedin.com/in/ricardo1995 - https://github.com/Ricckyfv
