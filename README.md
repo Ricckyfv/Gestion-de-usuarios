@@ -64,11 +64,13 @@ Clonar el repositorio:
 
 git clone https://github.com/Ricckyfv/Gestion-de-usuarios
 
-cd Gestion-de-usuarios
+cd nombre-de-carpeta-del-proyecto
 
 Construir el archivo ejecutable (.jar):
 
-./mvnw clean package -DskipTests
+En Windows: mvnw.cmd clean package -DskipTests
+
+En Linux/Mac: ./mvnw clean package -DskipTests
 
 Levantar los servicios con Docker:
 
