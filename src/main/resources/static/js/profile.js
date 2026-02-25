@@ -39,8 +39,12 @@ async function loadProfile() {
 }
 
 function logout() {
-    localStorage.clear();
-    window.location.href = 'login.html';
+// 1. Borramos el token y datos del usuario
+    localStorage.removeItem('token');
+    localStorage.removeItem('userEmail');
+
+    // 2. Redirigimos eliminando la página actual del historial
+    window.location.replace('login.html');
 }
 
 // Función para habilitar la edición

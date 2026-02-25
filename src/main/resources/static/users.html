@@ -11,10 +11,9 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script>
-        // EL GUARDIA DE SEGURIDAD
-        // Si no hay token en el localStorage, mandamos al usuario al login de inmediato
-        if (!localStorage.token) {
-            window.location.href = 'login.html';
+        // Si no hay token en el almacén, redirigir al login inmediatamente
+        if (!localStorage.getItem('token')) {
+            window.location.replace('login.html');
         }
     </script>
 </head>
