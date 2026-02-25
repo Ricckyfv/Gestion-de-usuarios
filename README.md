@@ -98,6 +98,10 @@ DB Name: gestionusuarios
 
 Puerto de la API: 8080
 
+🔑 Credenciales de prueba: 
+
+Para probar las funciones de administrador, usa el correo admin@admin.com y la clave admin123.
+
 ### 📸 Capturas de Pantalla
 
 #### Inicio de Sesión

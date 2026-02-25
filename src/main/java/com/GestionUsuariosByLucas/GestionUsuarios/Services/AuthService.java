@@ -38,7 +38,10 @@ public class AuthService {
         String passwordHasheada = passwordHasher.encode(user.getPassword());
         user.setPassword(passwordHasheada);
 
-        user.setRole("USER"); // Todo el que se registra por la web es un usuario normal
+        if (user.getRole() == null || user.getRole().isEmpty()) {
+            user.setRole("USER");
+        }
+
         userRepository.save(user);
     }
 
