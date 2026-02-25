@@ -70,7 +70,7 @@ async function loadUsers() {
 
 function logout() {
     localStorage.clear();
-    window.location.href = 'login.html';
+    window.location.replace('login.html');
 }
 
 async function deleteUser(id) {

@@ -11,10 +11,23 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script>
-        // Si no hay token en el almacén, redirigir al login inmediatamente
-        if (!localStorage.getItem('token')) {
-            window.location.replace('login.html');
-        }
+        // Función para verificar sesión
+            function checkSession() {
+                if (!localStorage.getItem('token')) {
+                    window.location.replace('login.html');
+                }
+            }
+
+            // Se ejecuta al cargar Y al volver atrás/adelante en el navegador
+            window.onpageshow = function(event) {
+                // event.persisted es true si la página se carga desde el caché del navegador
+                if (event.persisted || !localStorage.getItem('token')) {
+                    checkSession();
+                }
+            };
+
+            // Ejecución inmediata inicial
+            checkSession();
     </script>
 </head>
 

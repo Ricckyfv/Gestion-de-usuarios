@@ -44,7 +44,7 @@ function logout() {
     localStorage.removeItem('userEmail');
 
     // 2. Redirigimos eliminando la página actual del historial
-    window.location.replace('login.html');
+    window.location.replace('index.html');
 }
 
 // Función para habilitar la edición
