@@ -30,7 +30,7 @@ async function loadUsers() {
 
     const url = (role === 'ADMIN') ? 'api/users' : 'api/users/me';
 
-    const request = await fetch(`${BASE_URL}/url`, {
+    const request = await fetch(`${BASE_URL}/${url}`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -52,9 +52,6 @@ async function loadUsers() {
 
     let listadoHtml = '';
     for (let user of users) {
-//       if (localStorage.role !== 'ADMIN') {
-//            localStorage.currentUserId = user.id;
-//           }
 
         let btnDelete = `<a href="#" onclick="deleteUser(${user.id})" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>`;
         let btnEdit = `<a href="#" onclick="editUser(${user.id})" class="btn btn-info btn-circle btn-sm ml-2"><i class="fas fa-edit"></i></a>`;
@@ -125,13 +122,11 @@ async function deleteUser(id) {
 
   }
 
-  // 1. Esta función se dispara al pulsar el botón azul de la tabla
   async function editUser(id) {
-      // Abrimos el modal primero
+
       $('#editModal').modal('show');
 
-      // Buscamos los datos actuales del usuario para que el admin/user vea qué va a cambiar
-      const request = await fetch('api/users/' + id, {
+      const request = await fetch(`${BASE_URL}/api/users/` + id, {
           method: 'GET',
           headers: {
               'Accept': 'application/json',
@@ -140,14 +135,12 @@ async function deleteUser(id) {
       });
       const user = await request.json();
 
-      // Rellenamos los campos del modal con los datos que nos dio el servidor
       document.getElementById('editId').value = user.id;
       document.getElementById('editName').value = user.name;
       document.getElementById('editEmail').value = user.email;
       document.getElementById('editPhone').value = user.phoneNumber ? user.phoneNumber : '';
   }
 
-  // 2. Esta función se dispara al pulsar "Guardar Cambios" dentro del modal
   async function saveUserEdit() {
       let id = document.getElementById('editId').value;
       let datos = {
@@ -157,7 +150,7 @@ async function deleteUser(id) {
           phoneNumber: document.getElementById('editPhone').value
       };
 
-      const request = await fetch('api/users/update/' + id, {
+      const request = await fetch(`${BASE_URL}/api/users/update/` + id, {
           method: 'PUT',
           headers: {
               'Accept': 'application/json',
@@ -168,9 +161,8 @@ async function deleteUser(id) {
       });
 
       if (request.ok) {
-          $('#editModal').modal('hide'); // Cerramos el modal
+          $('#editModal').modal('hide');
 
-          // Actualizamos la fila de la tabla visualmente sin refrescar
           const row = document.getElementById(`row-${id}`);
           if (row) {
               row.cells[1].innerText = datos.name;
