@@ -1,3 +1,6 @@
+const BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:8080'
+    : 'https://gestion-de-usuarios-production-d7d9.up.railway.app';
 
 async function loginUser() {
 
@@ -8,7 +11,7 @@ async function loginUser() {
         password: document.getElementById('password').value
     };
 
-    const request = await fetch('api/auth/login', {
+    const request = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

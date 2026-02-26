@@ -4,6 +4,11 @@ $(document).ready(function() {
     setupUI();
 });
 
+// dinámico:
+const BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:8080'
+    : 'https://gestion-de-usuarios-production-d7d9.up.railway.app';
+
 function setupUI() {
 
     document.getElementById('display-email').innerText = localStorage.email;
@@ -25,7 +30,7 @@ async function loadUsers() {
 
     const url = (role === 'ADMIN') ? 'api/users' : 'api/users/me';
 
-    const request = await fetch(url, {
+    const request = await fetch(`${BASE_URL}/url`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -82,7 +87,7 @@ async function deleteUser(id) {
       }
 
     try {
-          const request = await fetch('api/users/' + id, {
+          const request = await fetch(`${BASE_URL}/api/users/` + id, {
             method: 'DELETE',
             headers: {
               'Accept': 'application/json',

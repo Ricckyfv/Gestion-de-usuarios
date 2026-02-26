@@ -1,3 +1,7 @@
+const BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:8080'
+    : 'https://gestion-de-usuarios-production-d7d9.up.railway.app';
+
 async function register() {
     let datos = {
         name: document.getElementById("txtName").value,
@@ -15,7 +19,7 @@ async function register() {
     }
 
 //    const request = await fetch('api/auth/register'
-    const request = await fetch('http://localhost:8080/api/auth/register', {
+    const request = await fetch(`${BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
