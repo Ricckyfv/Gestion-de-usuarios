@@ -1,23 +1,15 @@
-# ETAPA 1: Compilación (Build)
-# Usamos una imagen de Maven para compilar el código
+# ETAPA 1: Construcción (Descarga dependencias y compila el .jar)
 FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
-
-# Copiamos los archivos del proyecto (pom.xml y la carpeta src)
-COPY . .
-
-# Ejecutamos el comando de empaquetado (como hacías en tu PC)
+COPY pom.xml .
+COPY src ./src
+# Compilamos omitiendo tests para que sea más rápido
 RUN mvn clean package -DskipTests
 
-# ETAPA 2: Ejecución (Run)
-# Usamos una imagen más ligera solo con Java para correr la app
+# ETAPA 2: Ejecución (Toma el .jar y levanta el servidor)
 FROM eclipse-temurin:17-jre
 WORKDIR /app
-
-# Copiamos el .jar generado en la etapa anterior
+# Copiamos el .jar que se acaba de crear en la etapa 1
 COPY --from=build /app/target/*.jar app.jar
-
 EXPOSE 8080
-
-# Comando para arrancar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
